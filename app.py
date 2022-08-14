@@ -17,4 +17,4 @@ def life():
     return render_template("life.html" , wld = world)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
