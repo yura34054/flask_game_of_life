@@ -1,0 +1,30 @@
+
+
+<table class="world">
+    {% for i in range(wld.world | length) %}
+        <tr>
+            {% for j in range(wld.world[0] | length) %}
+                {% if wld.world[i][j] == 1 %}
+                    <td class="cell living-cell"></td>
+                {% elif wld.old_world[i][j] == 1 %}
+                    <td class="cell dead-cell"></td>
+                {% else %}
+                    <td class = "cell"></td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <div class="counter">{{ wld.counter }}</div>
+    <a class="btn btn-info refresh" href="{{ url_for('life') }}">Обновить</a>
+    <a class="btn btn-warning home" href="{{ url_for('index') }}">Домой</a>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>setInterval(() => window.location.reload() , 1000)</script>
+{% endblock %}
